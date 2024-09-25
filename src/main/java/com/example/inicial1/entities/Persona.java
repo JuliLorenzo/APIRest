@@ -36,11 +36,9 @@ public class Persona implements Serializable {
     @JoinColumn(name = "fk_domicilio")
     private Domicilio domicilio;
 
-    /*
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "persona_id")
     @Builder.Default
-    private Set<Libro> personas = new HashSet<>();
-*/
+    private Set<Libro> libros = new HashSet<>();
 }
 

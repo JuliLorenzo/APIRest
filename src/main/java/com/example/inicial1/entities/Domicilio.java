@@ -30,5 +30,5 @@ public class Domicilio implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "domicilio_id")
     @Builder.Default
-    private Set<Localidad> domicilios = new HashSet<>();
+    private Set<Localidad> localidades = new HashSet<>();
 }
