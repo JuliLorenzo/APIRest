@@ -15,10 +15,7 @@ import java.io.Serializable;
 @ToString
 @Builder
 @Audited
-public class Autor implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Autor extends Base {
 
     @Column(name = "nombre")
     private String nombre;

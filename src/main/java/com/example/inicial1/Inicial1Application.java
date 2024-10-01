@@ -1,7 +1,9 @@
 package com.example.inicial1;
 
 import com.example.inicial1.entities.Domicilio;
+import com.example.inicial1.entities.Libro;
 import com.example.inicial1.entities.Persona;
+import com.example.inicial1.repositories.LibroRepository;
 import com.example.inicial1.repositories.PersonaRepository;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
@@ -21,6 +23,7 @@ public class Inicial1Application {
 
 	@Autowired
 	private PersonaRepository personaRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Inicial1Application.class, args);
 
@@ -32,17 +35,27 @@ public class Inicial1Application {
 	CommandLineRunner init(PersonaRepository personaRepository) {
 		return args -> {
 	// Creo un objeto persona
-Persona per1 = Persona.builder().
-		nombre("Alberto").apellido("Cortez").
-		build();
+			Persona per1 = Persona.builder().
+			nombre("Alberto").apellido("Cortez").
+			build();
 
-Domicilio dom1 = Domicilio.builder().
-		calle("Suipacha").
-		numero(239).build();
+	//Creo un Domicilio
+			Domicilio dom1 = Domicilio.builder().
+			calle("Suipacha").
+			numero(239).build();
 
-per1.setDomicilio(dom1);
+			per1.setDomicilio(dom1);
 
 			personaRepository.save(per1);
+
+	//Creo un Libro
+			Libro cenicienta = Libro.builder().
+					autor("Julieta").
+					genero("Infantil").
+					titulo("Cenicienta").
+					build();
+
+			per1.getLibros().add(cenicienta);
 
 // Creo otra persona
 			Persona per2 = Persona.builder().
@@ -63,8 +76,6 @@ per1.setDomicilio(dom1);
 			System.out.println(recuperadas);
 
 			logger.info("Detalles de la persona: {}", recuperadas);
-
-
 
 
 			Optional<Persona> recuperada = personaRepository.findById(1L);

@@ -18,10 +18,7 @@ import java.util.Set;
 @ToString
 @Builder
 @Audited
-public class Persona implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Persona extends Base {
 
     @Column(name = "nombre")
     private String nombre;
