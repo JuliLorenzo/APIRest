@@ -2,9 +2,12 @@ package com.example.inicial1.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.envers.Audited;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "autor")
@@ -13,8 +16,9 @@ import java.io.Serializable;
 @Setter
 @Getter
 @ToString
-@Builder
+@SuperBuilder
 @Audited
+
 public class Autor extends Base {
 
     @Column(name = "nombre")
@@ -25,4 +29,9 @@ public class Autor extends Base {
 
     @Column(name = "bibliografia")
     private String bibliografia;
+
+    @ManyToMany(mappedBy = "autores")
+    @Builder.Default
+    private Set<Libro> libros = new HashSet<>();
+
 }

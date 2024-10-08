@@ -1,17 +1,17 @@
 package com.example.inicial1.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "libro")
@@ -20,7 +20,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-@Builder
+@SuperBuilder
 @Audited
 
 public class Libro extends Base {
@@ -39,4 +39,19 @@ public class Libro extends Base {
 
     @Column(name = "autor")
     private String autor;
+
+    /*
+    @ManyToMany(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "fk_autor")
+    @Builder.Default
+    private HashSet<Autor> autores = new HashSet<>();
+
+     */
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "articulo_categoria",
+                joinColumns = @JoinColumn(name = "articulo_id"),
+                inverseJoinColumns = @JoinColumn(name = "categoria_id")
+    )
+    @Builder.Default
+    private Set<Autor> autores = new HashSet<>();
 }

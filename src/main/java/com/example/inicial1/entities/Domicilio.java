@@ -2,6 +2,7 @@ package com.example.inicial1.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.envers.Audited;
 
 import java.io.Serializable;
@@ -9,12 +10,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "domicilio")
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 @ToString
-@Builder
+@SuperBuilder
 @Audited
 public class Domicilio extends Base {
 
@@ -24,8 +26,7 @@ public class Domicilio extends Base {
     @Column(name = "numero")
     private int numero;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "domicilio_id")
-    @Builder.Default
-    private Set<Localidad> localidades = new HashSet<>();
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "fk_localidad")
+    private Localidad localidad;
 }

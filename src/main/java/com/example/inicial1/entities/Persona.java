@@ -16,7 +16,7 @@ import java.util.Set;
 @Setter
 @Getter
 @ToString
-@Builder
+@SuperBuilder
 @Audited
 public class Persona extends Base {
 
@@ -37,5 +37,17 @@ public class Persona extends Base {
     @JoinColumn(name = "persona_id")
     @Builder.Default
     private Set<Libro> libros = new HashSet<>();
+
+    /*
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinTable(
+                name = "persona_libro,
+                joinColumns = @JoinColumn(name = "persona_id"),
+                inverseJoinColumns = @JoinColumn(name = "libro_id")
+    )
+    @Builder.Default
+    private Set<Libro> libros = new HashSet<Libro>();
+
+     */
 }
 

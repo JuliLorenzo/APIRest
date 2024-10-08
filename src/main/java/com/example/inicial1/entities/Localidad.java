@@ -1,6 +1,7 @@
 package com.example.inicial1.entities;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
@@ -13,7 +14,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-@Builder
+@SuperBuilder
 @Audited
 public class Localidad extends Base {
 
