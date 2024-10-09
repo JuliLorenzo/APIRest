@@ -3,7 +3,7 @@ package com.example.inicial1.entities;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 @MappedSuperclass
@@ -13,10 +13,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @ToString
 @SuperBuilder
-
 public class Base implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 }

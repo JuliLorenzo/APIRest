@@ -3,7 +3,6 @@ package com.example.inicial1;
 import com.example.inicial1.entities.Domicilio;
 import com.example.inicial1.entities.Libro;
 import com.example.inicial1.entities.Persona;
-import com.example.inicial1.repositories.LibroRepository;
 import com.example.inicial1.repositories.PersonaRepository;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;

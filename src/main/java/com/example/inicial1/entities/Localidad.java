@@ -4,8 +4,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "localidad")

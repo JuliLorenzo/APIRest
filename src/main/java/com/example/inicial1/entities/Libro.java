@@ -1,15 +1,15 @@
 package com.example.inicial1.entities;
 
-import javax.persistence.*;
-
-
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.envers.Audited;
 
-import java.io.Serializable;
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +22,6 @@ import java.util.Set;
 @ToString
 @SuperBuilder
 @Audited
-
 public class Libro extends Base {
 
     @Column(name = "titulo")
